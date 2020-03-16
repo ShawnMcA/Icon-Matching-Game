@@ -16,7 +16,7 @@ const GameGrid = {
     gameBG: "game-background",
     cells: "game-cell",
 
-    // random Number   
+    // random Number - Cycle through cell items
     randomNum : function () {
         return Math.floor(Math.random() * 8);
     },
@@ -31,9 +31,10 @@ const GameGrid = {
         cell.classList.remove(icon);
     },
 
+    // !!TODO!! - UPDATE EMPTY CELL LOGIC
     // empty - update cell // !empty - reset cell
     cellEmptyCheck: function(event){
-        let cellItem = GameGrid.randomNum();
+        let cellItem = GameGrid.randomNum(); // TESTING
         const cell = event.target; // click target
         if(!cell.classList.contains(GameGrid.cells)) return; // returns if ! game cell
         cell.classList.contains(GameGrid.items[cellItem]) ? GameGrid.removeCellItem(cell, GameGrid.items[cellItem]) : GameGrid.addCellItem(cell, GameGrid.items[cellItem]); // add game item 
