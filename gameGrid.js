@@ -3,8 +3,9 @@
 //
 // ========================================
 
+import { GameLogic } from './gameLogic.js';
 
-const GameGrid = {
+export const GameGrid = {
     
     // cell items
     items: [
@@ -42,6 +43,7 @@ const GameGrid = {
     },
 
     // fills cells with board array icons
+    // !! FOR TESTING !!
     fillBoardItems: function() {
         const cells = document.getElementsByClassName("game-cell");
 
@@ -62,7 +64,6 @@ const GameGrid = {
         let num = Math.abs(+cell.id.slice(cell.id.length - 2));
         let icon = this.items[this.board[num - 1]];
         cell.classList.add(icon);
-
     },
 
     // reset cell
@@ -73,40 +74,15 @@ const GameGrid = {
         }
     },
 
-    // empty - update cell // !empty - reset cell
-    cellEmptyCheck: function(event){
-        const cell = event.target; // click target
-        let cellClasses = event.target.classList;
-
-        if(!cellClasses.contains(GameGrid.cells)) return; // returns if ! game cell
-
-        if(cellClasses.length > 1)  {
-            GameGrid.removeCellItem(cell);
-         } else {
-            GameGrid.addCellItem(cell); // add game item 
-         } 
-    },
-    
     // add grid listeners
     createGridEventListeners: function () {
         const table = document.getElementById(this.gameBG);
-        table.addEventListener("click", this.cellEmptyCheck);
+        table.addEventListener("click", GameLogic.cellEmptyCheck);
     },
 
     // delete grid listeners
     deleteGridEventListeners: function() {
         const table = document.getElementById(this.gameBG);
-        table.removeEventListener("click", this.cellEmptyCheck);
+        table.removeEventListener("click", GameLogic.cellEmptyCheck);
     }
 };
-
-// window load
-window.addEventListener("load", function(){
-    GameGrid.fillBoardItems();
-    GameGrid.createGridEventListeners();
-});
-
-// window unload
-window.addEventListener("unload", function(){
-    GameGrid.deleteGridEventListeners();
-});
