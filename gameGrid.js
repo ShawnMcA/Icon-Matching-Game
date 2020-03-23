@@ -78,6 +78,7 @@ export const GameGrid = {
     createGridEventListeners: function () {
         const table = document.getElementById(this.gameBG);
         table.addEventListener("click", GameLogic.cellEmptyCheck);
+        //table.addEventListener("mouseup", GameLogic.matchCheck);
     },
 
     // delete grid listeners
@@ -86,3 +87,14 @@ export const GameGrid = {
         table.removeEventListener("click", GameLogic.cellEmptyCheck);
     }
 };
+
+// window load
+window.addEventListener("load", function(){
+    GameGrid.createBoardItems();
+    GameGrid.createGridEventListeners();
+});
+
+// window unload
+window.addEventListener("unload", function(){
+    GameGrid.deleteGridEventListeners();
+});
