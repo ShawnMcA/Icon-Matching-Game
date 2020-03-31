@@ -8,6 +8,10 @@
     </head>
     <body>
         <section id="game-grid">
+            <section id="lives-left">
+                <p id="lives-txt">Lives Remaining:</p>
+                <p id="lives">8</p>
+            </section>
             <div id="game-background">
                 <div class="game-cell" id="cell-1"></div>
                 <div class="game-cell" id="cell-2"></div>
@@ -25,6 +29,12 @@
                 <div class="game-cell" id="cell-14"></div>
                 <div class="game-cell" id="cell-15"></div>
                 <div class="game-cell" id="cell-16"></div>
+            </div>
+        </section>
+        <section id="game-modal" class="game-modal-bg">
+            <div class="game-modal-message">
+                <p id="message-header">Ohh no!! You've run out of lives.</p>
+                <div id="message-btn"><p>Continue</p></div>
             </div>
         </section>
         <script type = "module" src="gameGrid.js"></script>

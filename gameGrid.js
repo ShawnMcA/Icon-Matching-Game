@@ -23,6 +23,9 @@ export const GameGrid = {
     gameBG: "game-background",
     cells: "game-cell",
     board: [],
+    modal: "game-modal",
+    messageHeader: "message-header",
+    messageBtn: "message-btn",
 
     // fills the board array with icons 
     createBoardItems: function() {
@@ -78,23 +81,22 @@ export const GameGrid = {
     createGridEventListeners: function () {
         const table = document.getElementById(this.gameBG);
         table.addEventListener("click", GameLogic.cellEmptyCheck);
-        //table.addEventListener("mouseup", GameLogic.matchCheck);
     },
 
     // delete grid listeners
-    deleteGridEventListeners: function() {
+    deleteGridEventListeners: function () {
         const table = document.getElementById(this.gameBG);
         table.removeEventListener("click", GameLogic.cellEmptyCheck);
     }
 };
 
 // window load
-window.addEventListener("load", function(){
+window.addEventListener("load", () => {
     GameGrid.createBoardItems();
     GameGrid.createGridEventListeners();
 });
 
 // window unload
-window.addEventListener("unload", function(){
+window.addEventListener("unload", () => {
     GameGrid.deleteGridEventListeners();
 });
